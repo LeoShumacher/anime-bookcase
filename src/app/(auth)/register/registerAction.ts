@@ -2,6 +2,7 @@
 
 import db from "@/src/lib/db";
 import { hashSync } from "bcrypt-ts";
+import { redirect } from "next/navigation";
 
 export default async function registerAction(
   _prevState: unknown,
@@ -39,6 +40,10 @@ export default async function registerAction(
       password: hashSync(data.password),
     },
   });
+
+  if (FormData.get("email")) {
+    redirect("/login");
+  }
 
   return {
     message: "Usuário criado com sucesso",
