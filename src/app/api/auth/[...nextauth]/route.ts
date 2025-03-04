@@ -1,25 +1,24 @@
+import { findUserByCredentials } from "@/src/lib/user";
 import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
+import Credentials from "next-auth/providers/credentials";
 
 const handler = NextAuth({
   providers: [
-    CredentialsProvider({
-      name: "Credentials",
+    Credentials({
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password" },
+        email: {},
+        password: {},
       },
-      async authorize(credentials, req) {
-        const res = await fetch("/your/endpoint", {
-          method: "POST",
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" },
-        });
-        const user = await res.json();
-        if (res.ok && user) {
-          return user;
-        }
-        return null;
+
+      authorize: async (credentials) => {
+        console.log(credentials);
+
+        const user = await findUserByCredentials(
+          credentials?.email as string,
+          credentials?.password as string
+        );
+
+        return user;
       },
     }),
   ],
