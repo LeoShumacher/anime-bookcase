@@ -8,7 +8,8 @@ export default function LoginForm() {
   const [state, formAction, isPending] = useActionState(loginAction, null);
   return (
     <>
-      <Form action={loginAction}>
+      {state?.success === false && <p>dados de login incorretos</p>}
+      <Form action={formAction}>
         <div>
           <label htmlFor="">Email</label>
           <input

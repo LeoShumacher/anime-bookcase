@@ -1,14 +1,23 @@
 import { signIn } from "next-auth/react";
 
-function formDataToObject(formData: FormData): Record<string, string> {
-  const obj: Record<string, string> = {};
-  formData.forEach((value, key) => {
-    obj[key] = value.toString();
-  });
-  return obj;
-}
+export default async function loginAction(
+  _prevState: unknown,
+  formData: FormData
+) {
+  try {
+    const result = await signIn("credentials", {
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+      redirect: false,
+    });
 
-export default async function loginAction(formData: FormData) {
-  const data = formDataToObject(formData);
-  await signIn("credentials", data);
+    if (result?.error) {
+      return { success: false, message: "Dados de login incorretos" };
+    }
+
+    return { success: true };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (e) {
+    return { success: false, message: "Erro inesperado durante o login" };
+  }
 }

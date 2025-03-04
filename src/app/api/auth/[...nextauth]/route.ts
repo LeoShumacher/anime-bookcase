@@ -11,8 +11,6 @@ const handler = NextAuth({
       },
 
       authorize: async (credentials) => {
-        console.log(credentials);
-
         const user = await findUserByCredentials(
           credentials?.email as string,
           credentials?.password as string
