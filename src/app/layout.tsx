@@ -12,7 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className="w-screen h-screen">{children}</body>
+      <body className="w-screen h-screen flex flex-col">{children}</body>
     </html>
   );
 }
