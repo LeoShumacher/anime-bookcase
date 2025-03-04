@@ -1,14 +1,10 @@
 import Form from "next/form";
+import registerAction from "./registerAction";
 
 export default function SignUp() {
   return (
     <div>
-      <Form
-        action={async (data) => {
-          "use server";
-          console.log(data);
-        }}
-      >
+      <Form action={registerAction}>
         <div>
           <label htmlFor="">Nome</label>
           <input type="text" name="name" placeholder="João Silva" />
