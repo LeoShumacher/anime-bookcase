@@ -2,6 +2,12 @@ import { findUserByCredentials } from "@/src/lib/user";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
+interface User {
+  id: string;
+  email: string;
+  name?: string;
+}
+
 const handler = NextAuth({
   pages: {
     signIn: "/register",
@@ -19,7 +25,7 @@ const handler = NextAuth({
           credentials?.password as string
         );
 
-        return user;
+        return user as User;
       },
     }),
   ],
