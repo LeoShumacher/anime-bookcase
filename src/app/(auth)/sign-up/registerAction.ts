@@ -4,7 +4,7 @@ import db from "@/src/lib/db";
 import { hashSync } from "bcrypt-ts";
 
 export default async function registerAction(
-  _prevState: any,
+  _prevState: unknown,
   FormData: FormData
 ) {
   const entries = Array.from(FormData.entries());
