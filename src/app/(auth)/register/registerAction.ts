@@ -28,7 +28,7 @@ export default async function registerAction(
 
   if (user) {
     return {
-      message: "Usuário já registrado",
+      message: "Usuário já cadastrado",
       sucess: false,
     };
   }

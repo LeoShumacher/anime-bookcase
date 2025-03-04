@@ -9,8 +9,10 @@ export default async function Home() {
   }
   return (
     <div>
-      {" "}
-      Bem vindo {session.user?.name} <LogoutButton />
+      <span className="text-3xl flex gap-2">
+        Bem vindo <p className="font-semibold">{session.user?.name}</p>
+      </span>
+      <LogoutButton />
     </div>
   );
 }

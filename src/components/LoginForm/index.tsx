@@ -18,7 +18,7 @@ export default function LoginForm() {
     <>
       <Form
         action={formAction}
-        className="w-80 h-80 border p-3 rounded-xl flex flex-col gap-2 justify-center"
+        className="w-80 h-content border p-3 rounded-xl flex flex-col gap-2 justify-center"
       >
         {state?.success === false && (
           <div className="border-2 border-red-800 p-2 text-red-800 font-semibold text-sm bg-red-200 rounded-md">
@@ -38,7 +38,7 @@ export default function LoginForm() {
           <Input type="password" name="password" placeholder="********" />
         </div>
         <Button
-          className="bg-zinc-800 hover:bg-zinc-800/90 disabled:bg-blue-800/60"
+          className="bg-zinc-800 hover:bg-zinc-800/90 disabled:bg-zinc-800/60"
           disabled={isPending}
           type="submit"
         >
