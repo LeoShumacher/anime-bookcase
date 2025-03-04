@@ -8,7 +8,7 @@ export default async function Login() {
     redirect("/");
   }
   return (
-    <div>
+    <div className="w-full h-full flex  items-center justify-center">
       <LoginForm />
     </div>
   );
